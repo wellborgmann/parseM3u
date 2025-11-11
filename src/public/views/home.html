@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAÇOCA TVing</title>
+  <!-- Links para Video.js (se não estiverem locais) -->
+  <link href="https://vjs.zencdn.net/8.23.3/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="/style.css?v=1.3">
+
+
+</head>
+
+<body>
+
+  <div class="sidebar">
+      <div class="online">
+    <h3>0</h3>
+  </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#" class="nav-link active" data-target="filmes">Filmes</a></li>
+        <li><a href="#" class="nav-link" data-target="series">Séries</a></li>
+        <li><a href="#" class="nav-link" data-target="canais">Canais</a></li>
+      </ul>
+    </nav>
+    <ul>
+
+      <li class="menu-opt" onclick="clearDatabase()">Limpar dados</li>
+        <li class="menu-opt" onclick="window.open('http://157.254.54.238:9001/home', '_blank')">Dev</li>
+    </ul>
+  </div>
+  <div class="sidebar-overlay"></div>
+
+  <header class="main-header">  
+    <div class="logo">
+      <a href="#">Wstream</a>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar título..."> 
+    </div>
+    <div class="btn-sidebar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#aaa" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+      </svg>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+
+
+
+    <!-- Seção de Filmes -->
+    <section id="filmes" class="content-section active">
+      <h2 class="section-title">Filmes Populares</h2>
+      <div class="grid-container no-select"></div>
+      <div class="pagination-controls"></div>
+    </section>
+
+    <!-- Seção de Séries -->
+    <section id="series" class="content-section">
+      <h2 class="section-title">Séries em Alta</h2>
+      <div class="grid-container no-select"></div>
+      <div class="pagination-controls"></div>
+    </section>
+
+    <!-- Seção de Canais -->
+    <section id="canais" class="content-section">
+      <h2 class="section-title">Canais ao Vivo</h2>
+      <div class="grid-container no-select"></div>
+      <div class="pagination-controls"></div>
+    </section>
+  </main>
+
+  <!-- Overlay para o Player de Vídeo (começa escondido) -->
+  <div id="player-overlay" class="player-overlay">
+    <button id="close-player" class="close-player-button">×</button>
+    <div class="player-container">
+      
+      <h3 id="video-title"></h3>
+    </div>
+
+    <div class="player-container" id="description">
+
+    </div>
+  </div>
+
+  
+
+
+
+  <div id="serverModal" class="modal">
+
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Escolha um Servidor</h2>
+      <p>Para a melhor experiência, temos vários servidores.</p>
+
+      <div class="server-options">
+        <div class="server-option" data-server="1">
+          <div class="server-name">
+            <i class="fas fa-globe-americas"></i>
+            <span>Servidor Principal (Global)</span>
+          </div>
+          <span class="server-ping">Ping: 25ms</span>
+        </div>
+
+
+      </div>
+
+      <button id="confirmBtn" class="confirm-button">Confirmar Seleção</button>
+      <div id="progresso"></div>
+    </div>
+
+  </div>
+
+  
+
+  <!-- Scripts -->
+  <script src="/download.js"></script>
+  <script src="/moviedb.js?v=1.6"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://vjs.zencdn.net/8.23.3/video.min.js"></script>
+  <script src="/home.js?v=1.6 "></script>
+  <script>
+    document.querySelectorAll('.no-select').forEach(el => {
+  // Bloqueia o menu de contexto (clique direito ou toque longo)
+  el.addEventListener('contextmenu', e => e.preventDefault());
+
+  // (Opcional) Bloqueia arrastar
+  el.addEventListener('dragstart', e => e.preventDefault());
+});
+
+  </script>
+</body>
+
+</html>
