@@ -1,4 +1,4 @@
-const REMOTE_URL = "https://github.com/wellborgmann2/FILMES/raw/refs/heads/main/lista.txt";
+const REMOTE_URL = "http://157.254.54.238:9001/lista.txt";
 
 global.Midias = { movies: [], channels: [], series: {} };
 let originalMidias = {};
